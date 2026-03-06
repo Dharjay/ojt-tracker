@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OJT Time Tracker</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/root.css" />
+    <link rel="stylesheet" href="assets/css/index.css" />
+  </head>
+  <body>
+    <div class="header">
+      <div class="header-icon">🕐</div>
+      <h1>OJT Time Tracker</h1>
+      <p class="subtitle">
+        Log your daily on-the-job training hours by
+        <strong>Dharjay Pogi 123</strong>
+      </p>
+    </div>
+
+    <div class="wrapper">
+      <!-- Form -->
+      <div class="card">
+        <div class="card-title">Add Entry</div>
+        <div class="form-row">
+          <div class="field">
+            <label>Date</label>
+            <input type="date" id="inp-date" />
+          </div>
+          <div class="field">
+            <label>Time In</label>
+            <input type="time" id="inp-in" />
+          </div>
+          <div class="field">
+            <label>Time Out</label>
+            <input type="time" id="inp-out" />
+          </div>
+          <button class="btn-add" onclick="addEntry()">Add</button>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="summary-row">
+        <div class="stat-box">
+          <div class="val" id="stat-total">0h 00m</div>
+          <div class="lbl">Total Hours</div>
+        </div>
+        <div class="stat-box">
+          <div class="val" id="stat-days">0</div>
+          <div class="lbl">Days Logged</div>
+        </div>
+        <div class="stat-box">
+          <div class="val" id="stat-avg">0h 00m</div>
+          <div class="lbl">Avg Per Day</div>
+        </div>
+        <div class="stat-box">
+          <div class="val" id="stat-pct">0%</div>
+          <div class="lbl">Completed</div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-box">
+        <div class="prog-top">
+          <span class="prog-top-left"
+            >Progress toward
+            <input
+              class="req-input"
+              id="req-hours"
+              type="number"
+              value="486"
+              min="1"
+              onchange="updateRequired()"
+            />
+            hrs required
+          </span>
+          <span class="prog-top-right" id="prog-label">0h 00m / 486h 00m</span>
+        </div>
+        <div class="prog-bar-bg">
+          <div class="prog-bar-fill" id="prog-fill" style="width: 0%"></div>
+        </div>
+        <div class="prog-meta">
+          <span id="prog-done">0h 00m done</span>
+          <span id="prog-left">486h 00m remaining</span>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-box">
+        <div class="table-top">
+          <h2>Daily Log</h2>
+          <button class="btn-clear" onclick="clearAll()">Clear All</button>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Date</th>
+              <th>Time In</th>
+              <th>Time Out</th>
+              <th>Total Hours</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="log-body">
+            <tr>
+              <td colspan="6">
+                <div class="empty-state">
+                  <span class="empty-icon">📋</span>No entries yet. Add your
+                  first day above.
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+  </body>
+</html>
